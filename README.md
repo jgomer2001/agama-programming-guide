@@ -30,6 +30,9 @@ Ensure you have downloaded or (git) cloned the contents of this repository befor
 - [Agama basics and Hello world](./basics-hello-world/README.md)
 - [Collecting user input](./user-input/README.md)
 - [A closer look to values and variables](./variables/README.md)
+- [Logging: a `printf` equivalent](./logging/README.md)
+- [Key language traits](./key-traits/README.md)
+- [Conditionals and matching](./conditionals-matching/README.md)
 
 ## How to run/play the examples
 
@@ -37,9 +40,7 @@ Ensure you have downloaded or (git) cloned the contents of this repository befor
  An advanced text editor may be helpul as well.  or semicolons
  
 How to run: environmental facts, jans, ?
-    
-Logging (use Hello world flow and some var manipulation)
-    
-Conditionals and branching
+
+
 -->
 TODO
