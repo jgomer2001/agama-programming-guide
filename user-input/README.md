@@ -19,31 +19,31 @@ On disk, the project will look like the below:
 
 ```
 ├── code
-|    \─── com.acme.basics.Salutation.flow
+|    \─── com.acme.basics.salutation.flow
 \── web
-     \─── prompt.htm
+     \─── prompt.ftlh
      \─── salutation.ftlh
 ```
 
 ## Flow code
 
-The salutation flow is similar to `com.acme.basics.HelloWorld` but two pages will be shown instead of one:
+The salutation flow is similar to `com.acme.basics.helloworld` but two pages will be shown instead of one:
 
 ```
-Flow com.acme.basics.Salutation
+Flow com.acme.basics.salutation
     Basepath ""
 
-data = RRF "prompt.htm"
+data = RRF "prompt.ftlh"
 RRF "salutation.ftlh" data
 Finish true
 ```
 
-The first statement in the body, i.e. `data = RRF "prompt.htm"` does the following:
+The first statement in the body, i.e. `data = RRF "prompt.ftlh"` does the following:
 
-- Shows a static page with an input field where the user is expected to enter his nickname
+- Shows a (static) page with an input field where the user is expected to enter his nickname
 - After submission, the field values in the form are bound to variable `data` (an Agama _map_). It is basically an associative array or dictionary
 
-Contents of `prompt.htm` are:
+Contents of `prompt.ftlh` are:
 
 ```
 <!doctype html>
@@ -62,7 +62,7 @@ Once the HTTP POST occurs, variable `data` will have a value like: `{ nickname: 
 
 **Important facts:**
 
-- `RRF` returns a dictionary whose keys are the names of the form fields and the associated values correspond to the actual data sent. Values are always treated as Agama _string_s
+- `RRF` returns a dictionary whose keys are the names of the form fields and the associated values correspond to the actual data sent. Values are always treated as Agama *string*s
 - If the submitted form has no fields, and empty map is returned: `{ }`
 - The returned _map_ can be optionally assigned to a variable
 
@@ -72,7 +72,7 @@ Before sending content to the browser, `RRF` performs a process of rendering. Th
 
 There are different technologies for rendering UI templates. For instance, Janssen uses [Apache Freemarker](https://freemarker.apache.org). This is better understood with the example itself.
 
-For the second `RRF` directive in flow `com.acme.basics.Salutation`, two parameters are being passed: `"salutation.ftlh"` and `data`. Here `salutation.ftlh` is a Freemarker template located under the `web` directory of the project. Its contents look like:
+For the second `RRF` directive inm flow `com.acme.basics.salutation`, two parameters are being passed: `"salutation.ftlh"` and `data`. Here `salutation.ftlh` is a Freemarker template located under the `web` directory of the project. Its contents look like:
 
 ```
 <!doctype html>

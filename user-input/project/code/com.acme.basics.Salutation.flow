@@ -1,6 +1,0 @@
-Flow com.acme.basics.Salutation
-    Basepath ""
-
-data = RRF "prompt.htm"
-RRF "salutation.ftlh" data
-Finish true

@@ -1,4 +1,4 @@
-# Logging: a printf equivalent
+# Logging: a `printf` equivalent
 
 `printf`-style instructions are present in most, if not all programming languages. Agama is not the exception, however it deviates a bit from the canon in favor of simplicity. Also instead of printing to standard output (stdout), messages are appended to a log. This log refers to a server log given the fact Agama flows run on a server-side engine.
 
@@ -8,31 +8,31 @@ How to check this log depends on the concrete engine used. In the case of Jansse
 
 ## The `Log` directive
 
-Logging a message is done via the [`Log`](https://docs.jans.io/stable/agama/language-reference/#logging) directive. The message to log is associated to a level, known as the "severity" level - a common concept in server side programming. For instance, in the case of Janssen the levels are: _trace_, _debug_, _info_, _warn_, and _error_. Thus, every message conveys a "severity".
+Logging a message is done via the [`Log`](https://docs.jans.io/stable/agama/language-reference/#logging) directive. The message to log is associated to a level, known as the "severity" level - a common concept in server side programming. For instance, in the case of Janssen levels are: _trace_, _debug_, _info_, _warn_, and _error_. Thus, every message conveys a "severity".
 
 Quick facts:
 
 - `Log` can be passed one or more parameters
 - The message level may be specified in the first param by prefixing it with `@`. If not specified, a default severity is assumed, e.g. _info_
 - The percent character `%` can be used as a placeholder for interpolation of literals or variables. The `%` character is effective as placeholder only if present in the first parameter
-- Engines may print _maps_ and _lists_ partially, i.e. they may not be traversed wholly. In this case, the resulting message indicates part of the structure is missing
+- Engines may print *map*s and *list*s partially, i.e. they may not be traversed wholly. In this case, the resulting message indicates part of the structure is missing
 
 ## Example
 
-All of the above is made clearer (TODO?) with the flow that follows:
+All of the above is clarified in the flow that follows:
 
 ```
-Flow com.acme.basics.Logging
+Flow com.acme.basics.logging
     Basepath ""
     
-Log "@debug My message"  // prints My message at debug level
-Log "@d My message"      // A shortcut to the previous statement
+Log "@warn My message"  // prints My message at debug level
+Log "@w My message"      // A shortcut to the previous statement
 
 Log "My message"         // prints My message at default level, e.g. info
 Log "My" "message"       // The same. Params are printed separated by a space
 
 car = { brand: "Simca", model: 1934, color: "yellow" }
-Log car     // prints [(brand:Simca), (model:1934), (color:yellow)]
+Log car     // prints [(brand: Simca), (model: 1934), (color: yellow)]
 
 notes = [ "do", "re", "mi" ]
 Log notes   // prints [ do, re, mi ]
@@ -46,9 +46,9 @@ Log "% %!" "Agama" "is compact"   // prints Agama is compact!. Two placeholders 
 
 Log "My % % is %" car.model car.brand car.color   // prints My 1934 Simca is yellow
 
-Log "%, %, %, %, end" 1 2 3    //prints 1, 2, 3, %, end. Unmatched placeholder printed as %
+Log "%, %, %, %, end" 1 2 3    //prints 1, 2, 3, , end. One unmatched placeholder
 Log "% of 10 is 3" "30%"       //prints 30% of 10 is 3. Percentage char is treated as such from second param onwards
-Log "Interest rate is 20" "%" "..."   // prints Interest rate is 20%...
+Log "Interest rate is" "20%" "..."   // prints Interest rate is 20% ...
 
 Finish true
 ```

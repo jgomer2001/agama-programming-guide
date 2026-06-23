@@ -7,14 +7,14 @@
         <dd>${brand}</dd>
         
         <dt>Model</dt>
-        <dd>${model}</dd>
+        <dd>${model?c}</dd>
         
         <dt>Overhauls</dt>
         <dd>
             <#list overhaulsIn>
                 <ul>
                     <#items as year>
-                        <li>${year}</li>
+                        <li>${year?c}</li>
                     </#items>
                 </ul>
             <#else>

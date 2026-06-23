@@ -29,7 +29,7 @@ Here, a salutation message will be displayed on the user's browser. It is very s
 An Agama flow consists of a header and one or more statements following. A minimal header for this example would look like:
 
 ```
-Flow com.acme.basics.HelloWorld
+Flow com.acme.basics.helloworld
     Basepath ""
 ```
 
@@ -38,10 +38,10 @@ Flows start with the `Flow` keyword followed by the qualified name of the flow. 
 The statements following the header contain the actual flow implementation. In this case, a web page with a salutation will be shown. This is how it is done: 
 
 ```
-RRF "salutation.htm"
+RRF "salutation.ftlh"
 ```
 
-RRF is a powerful language directive. However in this case it does a very simple thing: it replies the content of file `salutation.htm` to the user's browser. It's kind of "serving" the file. Here is the content of `salutation.htm`:
+RRF is a powerful language directive. However in this case it does a very simple thing: it replies the content of file `salutation.ftlh` to the user's browser. It's kind of "serving" the file. Here is how it looks like:
 
 ```
 <!doctype html>
@@ -55,9 +55,11 @@ RRF is a powerful language directive. However in this case it does a very simple
 </html>
 ```
 
+The reason for the file extension (ftlh) is related to the FreeMarker Template Language - the templating technology used by the Janssen engine. The *h* in *ftlh* stands for HTML. This topic will be regarded in the upcoming example.
+
 **Note**: It is assumed this file resides inside `web` folder of the project.
 
-In practice, web flows almost always gather some data from the user: passwords, codes, gestures, etc. `RRF` not only serves content but "waits" (without blocking) until some data is received. The way data is sent back to the server is via HTML POST form submission. This is the reason `salutation.htm` has a form with a submit button.
+In practice, web flows almost always gather some data from the user: passwords, codes, gestures, etc. `RRF` not only serves content but "waits" (without blocking) until some data is received. The way data is sent back to the server is via HTML POST form submission. This is the reason `salutation.ftlh` has a form with a submit button.
 
 Once data is submitted - in this case an empty POST - `RRF` resumes and execution continues for the next statement found in the flow file.
 
@@ -75,13 +77,13 @@ This indicates success.
 
 ### Flow code
 
-So here's how the contents of file `com.acme.basics.HelloWorld.flow` look like:
+So here's how the contents of file `com.acme.basics.helloWorld.flow` look like:
 
 ```
-Flow com.acme.basics.HelloWorld
+Flow com.acme.basics.helloworld
     Basepath ""
     
-RRF "salutation.htm"
+RRF "salutation.ftlh"
 Finish true
 ```
 
@@ -93,9 +95,9 @@ Here's how this project is laid out in the filesystem:
 
 ```
 ├── code
-|    \─── com.acme.basics.HelloWorld.flow
+|    \─── com.acme.basics.helloworld.flow
 \── web
-     \─── salutation.htm
+     \─── salutation.ftlh
 ```
 
 This effectively reflects the contents of the [project](./project) directory.

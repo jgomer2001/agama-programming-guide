@@ -41,6 +41,7 @@ Ensure you have downloaded or (git) cloned the contents of this repository befor
  
 How to run: environmental facts, jans, ?
 
+In this page, a primitive "number guess" game is tackled. In upcoming examples, the game will be improved and polished to better resemble a real game. Initially, 
 
 -->
 TODO

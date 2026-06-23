@@ -42,14 +42,14 @@ Template `car_details.ftlh` displays some data passed in variable `car`. Here is
         <dd>${brand}</dd>
         
         <dt>Model</dt>
-        <dd>${model}</dd>
+        <dd>${model?c}</dd>
         
         <dt>Overhauls:</dt>
         <dd>
             <#list overhaulsIn>
                 <ul>
                     <#items as year>
-                        <li>${year}</li>
+                        <li>${year?c}</li>
                     </#items>
                 </ul>
             <#else>
@@ -64,7 +64,7 @@ Template `car_details.ftlh` displays some data passed in variable `car`. Here is
 </html>
 ```
 
-Here, `brand` and `model` from `car` variable are shown. The `overhaulsIn` list is traversed using Freemarker's [list directive](https://freemarker.apache.org/docs/ref_directive_list.html) to generate an HTML bulleted list. 
+Here, `brand` and `model` from `car` variable are shown. The `overhaulsIn` list is traversed using Freemarker's [list directive](https://freemarker.apache.org/docs/ref_directive_list.html) to generate an HTML bulleted list. Usage of `?c` avoids formatting numbers using locale settings. Without it, 1963 would be printed as 1,963. More on `c` [here](https://freemarker.apache.org/docs/ref_builtins_number.html#ref_builtin_c).
 
 ## Variables
 
@@ -80,7 +80,7 @@ len = s.length        // String length (equals to 5)
 letter = s[0]         // A string (equals to "A")
 len = letter.length   // String length (equals to 1)
 
-s[1] = "N"            // TODO
+s[1] = "N"            // Strings are immutable. s is still "Agama"
 
 l = [ true, false , null ]  // A list
 len = l.length              // List length (equals to 3)

@@ -7,7 +7,7 @@ len = s.length        // String length (equals to 5)
 letter = s[0]         // A string (equals to "A")
 len = letter.length   // String length (equals to 1)
 
-s[1] = "N"            // TODO
+s[1] = "N"            // Strings are immutable. s is still "Agama"
 
 l = [ true, false , null ]  // A list
 len = l.length              // List length (equals to 3)

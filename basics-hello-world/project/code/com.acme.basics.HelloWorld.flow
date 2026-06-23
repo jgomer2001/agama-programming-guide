@@ -1,5 +1,0 @@
-Flow com.acme.basics.HelloWorld
-    Basepath ""
-    
-RRF "salutation.htm"
-Finish true
