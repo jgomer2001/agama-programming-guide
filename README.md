@@ -7,7 +7,7 @@ In practice, Agama encompasses several aspects such as a language to write (depi
 
 ## Requirements
 
-To proceed with this guide in a seamlessly manner, the reader is expected to have a basic understanding of imperative programming, HTML, and git (versioning control). There are no restrictions regarding operating system, development environments, etc., however, deploying and testing flows requires usage of certain tools that present a learning curve. 
+To proceed with this guide in a seamlessly manner, the reader is expected to have a basic understanding of imperative programming and HTML. Introductory knowledge of Java and git is desirable. There are no restrictions regarding operating system, development environments, etc., however, deploying and testing flows requires usage of certain tools that present a learning curve. 
 
 ## Terminology
 
@@ -33,15 +33,25 @@ Ensure you have downloaded or (git) cloned the contents of this repository befor
 - [Logging: a `printf` equivalent](./logging/README.md)
 - [Key language traits](./key-traits/README.md)
 - [Conditionals and matching](./conditionals-matching/README.md)
+- [Calling foreign code](./foreign/README.md)
+- [Loops](./loops/README.md)
 
 ## How to run/play the examples
 
 <!--
  An advanced text editor may be helpul as well.  or semicolons
- 
+                                                                     
 How to run: environmental facts, jans, ?
 
-In this page, a primitive "number guess" game is tackled. In upcoming examples, the game will be improved and polished to better resemble a real game. Initially, 
 
+// ====  ====
+
+person = { name: "Jane", age: 40 }
+people = [ { name: "Josh", age: 23 }, { name: "Alice", age: 30 }, { name: "Jane", age: 40 } ]
+
+list = Call java.util.ArrayList#new people
+jane = Call java.util.Map#copyOf person 
+found = Call list contains jane
+Log "Jane in people? " found
 -->
 TODO

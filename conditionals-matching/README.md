@@ -102,7 +102,7 @@ Template [`rejected.ftlh`](./project/web/rejected.ftlh) is self explanatory. It 
 
 ### Flow analysis
 
-`com.acme.basics.admission_1` illustrates well the use of `When`/`Otherwise`, however it has unnecessary nesting of blocks. If the `Finish` inside the first `When` is hit, that would be the last instruction executed in the flow, so having an `Otherwise` is actually not needed. The same applies to its inner `When`. The less nesting, the shorter and easier-to-understand code.
+`com.acme.basics.admission_1` illustrates well the use of `When`/`Otherwise`, however it has unnecessary nesting of blocks. If the `Finish` inside the first `When` is hit, that would be the last instruction executed in the flow, so having an `Otherwise` is actually not needed. The same applies to the second `When`. The less nesting, the shorter and easier-to-understand code.
 
 The flow code can also be shortened if the rejection page shows a generic error message instead of specifying what went specifically wrong. The below is an improved, more compact version of the flow:
 
@@ -113,8 +113,8 @@ Flow com.acme.basics.admission_2
 data = { interests: [ "Coding", "Music", "Dancing", "Cooking" ] }
 regData = RRF "application.ftlh" data
 
-// Not enough or too much interests selected?
 list = regData.interest
+// Not enough or too much interests selected?
 When list is null or list.length is 4
     RRF "rejected2.ftlh"
     Finish false

@@ -19,7 +19,7 @@ Quick facts:
 
 ## Example
 
-All of the above is clarified in the flow that follows:
+The above is clarified in the flow that follows:
 
 ```
 Flow com.acme.basics.logging

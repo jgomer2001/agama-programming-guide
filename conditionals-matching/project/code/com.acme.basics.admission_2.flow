@@ -4,8 +4,8 @@ Flow com.acme.basics.admission_2
 data = { interests: [ "Coding", "Music", "Dancing", "Cooking" ] }
 regData = RRF "application.ftlh" data
 
-// Not enough or too much interests selected?
 list = regData.interest
+// Not enough or too much interests selected?
 When list is null or list.length is 4
     RRF "rejected2.ftlh"
     Finish false

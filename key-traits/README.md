@@ -1,6 +1,6 @@
 # Key language traits
 
-This page does not feature any example, instead, it describes important aspects of the language which are key to write valid programs in Agama. Readers are encouraged not to skip this topic.
+This page does not feature any example, instead, it highlights important aspects of the language which are key to write valid programs in Agama. Readers are encouraged not to skip this topic.
 
 Technically Agama is a DSL (domain-specific language) for depicting web flows. It's simple, compact, and expressive enough to cope with intricate flows despite the number of language [constructs](https://docs.jans.io/stable/agama/language-reference/#language-keywords) is small.
 
@@ -38,7 +38,7 @@ point = Centroid someVar.key anotherVar[0] superVar.key[myNumber].p
 
 The above parameters are not including any spaces, commas, or other distracting characters making the statement easy to read.
 
-These restrictions apply only to params which are *list*s or *map*s. When they are literals (*number*s, *boolean*s, *strings*, or just _null_), they can be passed directly. So in general, things like the below are legal:
+These restrictions apply only to params which are *list*s or *map*s. When they are literals (*number*s, *boolean*s, *string*s, or just `null`), they can be passed directly. So in general, things like the below are legal:
 
 ```
 // 7 params passed here 
@@ -46,12 +46,20 @@ val = SomeDirective "hi" true -3.1416 null myVar myList[0] myMap.key
 // myVar, myList[0], and myMap.key can belong to any type  
 ```
 
+## About composite calls
+
+Aligned to the syntactic "style" described so far, another restriction is the inability to make composite invocations in a single line, that is, supplying the output of a directive as an input for another. It is common in general-purpose language to find calls like `f(g(h(x)))` where *f*, *g*, and *h* are functions (procedures, methods, routines, etc.). This is not allowed in Agama.
+
+As an example, if a directive named `DistanceFromOrigin` measures the Euclidean distance between an (_x_, _y_) point to the (0, 0) point, the following is **not** valid: `DistanceFromOrigin Centroid a b c`. Even if `Centroid` received a single parameter (a list of points), it is also invalid to write: `DistanceFromOrigin Centroid points`. A correct way to write this computation is: 
+
+```
+point = Centroid a b c
+d = DistanceFromOrigin point
+```
+
 <!--
 Some features that set Agama aside from typical languages include:
 
-Being primarily focused on expressing (flow) structure, many idioms featured in general-purpose languages are unnecessary. For example, 
-
-In the introductory [example](./basics-hello-world/README.md) Agama was regarded as a language used to  .
-
+Being primarily focused on expressing (flow) structure, many idioms featured in s are unnecessary
 This has proved to be enough for writing flows!.
 -->

@@ -14,7 +14,7 @@ Every flow must be identified by a "qualified" name: a sufficiently expressive n
 
 ## Language traits
 
-Agama is an imperative language with a terse, non-distracting syntax. An Agama flow (`.flow` file) is expected to depict the structure of a web flow only, while low level details and computations have to be delegated to an underlying (foreign) language. For instance, the Janssen engine provides an easy and convenient way to call Java/Groovy code from Agama flows.
+Agama is an imperative language with a terse, non-distracting syntax. An Agama flow (`.flow` file) is expected to depict the structure of a web flow only, while low-level details and computations have to be delegated to an underlying (foreign) language. For instance, the Janssen engine provides an easy and convenient way to call Java/Groovy code from Agama flows.
 
 The language consists of a series of directives that can be passed parameters. Parameters are supplied after the name of the directive and are separated by spaces: there is no need to wrap parameters in parenthesis and use commas to separate them. Actually the language does not support parenthesis.
 
