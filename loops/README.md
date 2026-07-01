@@ -4,7 +4,7 @@ Agama provides two mechanisms to write loops: [`Repeat`](https://docs.jans.io/st
 
 ## A number guess game
     
-In this example a simple "number guess" game is tackled. In flow [`com.acme.basics.numberguess`](./project/code/com.acme.basics.numberguess.flow`), a random integer between zero and five is generated, and then the user is given up to three chances to guess the number. A dissection of the code follows.
+In this example a simple "number guess" game is tackled. In flow [`com.acme.basics.numberguess`](./project/code/com.acme.basics.numberguess.flow), a random integer between zero and five is generated, and then the user is given up to three chances to guess the number. A dissection of the code follows.
 
 These lines generate the random number and convert it to string:
 
@@ -26,7 +26,7 @@ Repeat 3 times max
 
 `data` contains info to be passed to the guessing page. `Repeat` is followed by how many times the indented block of code will be executed. Note loops can terminate earlier - this will  be seen in the second example.
 
-Next the [guessing](m./project/web/guess/number_guess.ftlh) page is presented to the user. It looks like this:
+Next the [guessing](./project/web/guess/number_guess.ftlh) page is presented to the user. It looks like this:
 
 ```html
 <!doctype html>
@@ -94,7 +94,7 @@ Repeat 3 times max
     Quit When name is null
 ```
 
-The [page](./project/code/referals/referred.ftlh) to enter a referral will be displayed at most three times. It has two sections:
+The [page](./project/web/referrals/referred.ftlh) to enter a referral will be displayed at most three times. It has two sections:
 
 - The top section is shown only after a first referral has been added. It displays a link that submits an empty form that the flow will interpret as no more contacts will be submitted
 - The lower section is always shown and has a form with fields for entering name and e-mail
@@ -113,7 +113,7 @@ pageData = { first: false, name: name }
 
 This "appends" the data entered (name and e-mail) to the list of referrals (`refs`). Given that `it` contains the iteration index, `refs[it]` refers to a yet unassigned position in refs. This makes the list grow at every iteration. Then a message is added to the log.
 
-Finally, `pageData` is updated with the last `name` entered, and the key `first` is assigned the value `false` before going to the next iteration. 
+Finally, `pageData` is updated with the last `name` entered, and the key `first` is assigned `false` before going to the next iteration. 
 
 Once the loop has ended, a final page is displayed and the flow finishes: 
 
@@ -123,7 +123,7 @@ RRF "thanks.ftlh" pageData
 Finish true
 ```
 
-`pageData` is overwritten with a map containing the elicited data and then passed to ["thank you"] (./project/web/referrals/thanks.ftlh) template in `RRF`. This page displays a summary of the contacts supplied - a comma-separated list of their names.
+`pageData` is overwritten with a map containing the elicited data and then passed to ["thank you"](./project/web/referrals/thanks.ftlh) template in `RRF`. This page displays a summary of the contacts supplied: a comma-separated list of their names.
 
 <!--This is expected to be a boolean value, however, if `failed` is not present in the map passed to the template, it defaults to `false` - that's what the expression `failed!false` means. See Freemarker's [Default value operator](https://freemarker.apache.org/docs/dgui_template_exp.html#dgui_template_exp_missing_default).
  however it is an empty map initially -->

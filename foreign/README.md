@@ -57,7 +57,7 @@ Object `sr` allows to generate cryptographically strong pseudo-random numbers no
 
 Note syntax differ from static calls. When invoking instance methods, the object is passed followed by the method name and then the arguments.
 
-## void returning methods
+### void returning methods
 
 Calling methods that return nothing are handled the same way than methods that return an actual value. Here's an example:
 
@@ -79,13 +79,11 @@ number | E = Call java.lang.Integer#parseInt "Aha!" 16
 Log "@e An error occurred." E.message
 ```
 
-Here, the static method [`parseInt`]( https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html#parseInt(java.lang.String,int)) of class `java.lang.Integer` is called. The idea is trying to parse the string *Aha!* assuming it is a base-16 representation. Clearly, `h` and `!` are not in the hex numbering system so this throws a `java.lang.NumberFormatException`.
+Here, the static method [`parseInt`]( https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html#parseInt(java.lang.String,int)) of class `java.lang.Integer` is called. The idea is trying to parse the string Aha! assuming it is a base-16 representation. Clearly, `h` and `!` are not in the hex numbering system so this throws a `java.lang.NumberFormatException`.
 
 The `| variable` indicates that if an exception occurs (even if [unchecked](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/RuntimeException.html)), it is caught and assigned to the given variable.   
 
-In this case, `number` will be `null` and `E` will be an instance of `NumberFormatException`. If instead of "Aha!", "Aba" was used, `number` would have a value of 2746 while `E` would be `null`.
- 
-The output in the log would read: `An error occurred. For input string: "Aha!" under radix 16`. Here, `E.message` is the equivalent of doing `getMessage()` on the Java exception.
+In this case, `number` will be `null` and `E` will be an instance of `NumberFormatException`. The output in the log would read: `An error occurred. For input string: "Aha!" under radix 16`. Here, `E.message` is the equivalent of doing `getMessage()` on the Java exception. If instead of "Aha!", "Aba" was used, `number` would have a value of 2746 while `E` would be `null`.
  
 If a method that returns nothing throws an exception, it can be caught like `| E = Call ...`, i.e. the assignment variable is not present.   
 
